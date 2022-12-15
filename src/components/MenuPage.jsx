@@ -9,7 +9,8 @@ export const MenuPage = () => {
     /**UseFetch para data del Menu */
     const {data, isLoading} = useFetch(`http://ts.colet.es:51508/api/MenuType/GetMenuList/esp/52`); 
     /**Condicional que permite la extraccion de data */
-    const list1 = !!data && data['MENÚ SUCCULENT'];  
+    const list1 = !!data && data['MENÚ SUCCULENT']; 
+    
 
     /**Traer el estado alergic con Redux*/
     const {status} = useSelector(state => state.alergic);
