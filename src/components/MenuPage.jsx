@@ -7,7 +7,8 @@ import { ListMenu } from './ListMenu';
 export const MenuPage = () => {
 
     /**UseFetch para data del Menu */
-    const {data, isLoading} = useFetch(`http://ts.colet.es:51508/api/MenuType/GetMenuList/esp/52`); 
+    const {data, isLoading} = useFetch(import.meta.env.VITE_API_URL); 
+    
     /**Condicional que permite la extraccion de data */
     const list1 = !!data && data['MENÚ SUCCULENT']; 
     
@@ -31,13 +32,15 @@ export const MenuPage = () => {
         <div className='flex gap-2 justify-center mt-5'>
 
             <button 
-            className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' 
+            className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 disabled:opacity-40' 
             onClick={() => dispatch( changeAlergic() ) }
             disabled={isAlergic}
             >Con Alergenos</button>
 
             <button 
-            className='focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900'
+            className='focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900
+            disabled:opacity-40
+            '
             onClick={() => dispatch ( changeNotAlergic () ) }
             disabled={!isAlergic}
             >Sin Alergenos</button>

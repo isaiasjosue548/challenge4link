@@ -4,10 +4,10 @@ import { useFetch } from '../hooks/useFetch';
 export const ListMenu = ({idProduct, productDescription, isAlergic}) => {
   
     /**Memo para el estado del boton presionado*/
-    const memoValue = useMemo(() => isAlergic, [isAlergic])
+    const memoValue = useMemo(() => isAlergic, [isAlergic]);
 
     /**Fetch para datos de Alergia*/
-    const {data} = useFetch(`http://ts.colet.es:51508/api/Allergenic/GetAllergenic/52/${idProduct}`);
+    const {data} = useFetch(`${import.meta.env.VITE_API_ALERGENS}/${idProduct}`);
     const list2 = !!data && data[`${idProduct} alergens`]; 
 
   return (
@@ -26,7 +26,6 @@ export const ListMenu = ({idProduct, productDescription, isAlergic}) => {
             }
             {
                     memoValue && list2.map(item => (
-                        
                         <p key={item.allergenId}>{item.name},</p>
                     ))
             }
